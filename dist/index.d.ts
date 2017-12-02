@@ -1,4 +1,4 @@
-export declare class Toggler {
+export default class Toggler {
     static init(): void;
     static uninit(): void;
     /** Protected area **/

@@ -6,7 +6,7 @@ const ATTR_TOGGLE = 'data-toggle',
     ATTR_TOGGLE_FOCUS = 'data-toggle-focus',
     ATTR_TOGGLE_HOVER = 'data-toggle-hover';
 
-export class Toggler {
+export default class Toggler {
   static init() {
     document.addEventListener('click', Toggler.onClick);
     document.addEventListener('focusin', Toggler.onFocusChanged);
