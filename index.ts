@@ -2,7 +2,6 @@ import closest from "zw-closest";
 
 const ATTR_TOGGLE = 'data-toggle',
     ATTR_TOGGLE_PARENT = 'data-toggle-parent',
-    ATTR_TOGGLE_ROOT = 'data-toggle-root',
     ATTR_TOGGLE_TARGET = 'data-toggle-target';
 
 export class Toggler {
@@ -17,41 +16,33 @@ export class Toggler {
       return;
     }
 
-    if (elem.hasAttribute(ATTR_TOGGLE_PARENT)) {
-      let parentSelector = elem.getAttribute(ATTR_TOGGLE_PARENT);
-      if (parentSelector) {
-        let parent = closest(elem, parentSelector);
-        if (parent) {
-          parent.classList.toggle(className);
-        }
+    let parentSelector = elem.getAttribute(ATTR_TOGGLE_PARENT),
+        targetSelector = elem.getAttribute(ATTR_TOGGLE_TARGET);
+
+    let nodes: NodeList|(Node|null)[] = [];
+
+    if (parentSelector == null && targetSelector != null) {
+      // target all elements by targetSelector inside the document
+      nodes = document.querySelectorAll(targetSelector);
+    } else if (parentSelector != null && targetSelector != null) {
+      // target all element by targetSelector inside parentSelector
+      let parent = closest(elem, parentSelector);
+      if (parent) {
+        nodes = parent.querySelectorAll(targetSelector);
       }
-      return;
+    } else if (parentSelector != null && targetSelector == null) {
+      // target parent
+      nodes = [ closest(elem, parentSelector) ];
+    } else {
+      // target the element itself
+      nodes = [ elem ];
     }
 
-    if (elem.hasAttribute(ATTR_TOGGLE_TARGET)) {
-      let targetSelector = elem.getAttribute(ATTR_TOGGLE_TARGET);
-      if (targetSelector) {
-        let root: Element|null = null;
-
-        let rootSelector = elem.getAttribute(ATTR_TOGGLE_ROOT);
-        if (rootSelector) {
-          root = closest(elem, rootSelector);
-        } else {
-          root = document.body;
-        }
-
-        if (root) {
-          let targets = root.querySelectorAll(targetSelector);
-          for (let q = 0; q < targets.length; ++q) {
-            (targets[q] as Element).classList.toggle(className);
-          }
-        }
+    for (let q = 0; q < nodes.length; ++q) {
+      if (nodes[q]) {
+        (nodes[q] as Element).classList.toggle(className);
       }
-      return;
     }
-
-    // if no other attributes defined
-    elem.classList.toggle(className);
   }
 
   protected static onClick(e: Event): void {

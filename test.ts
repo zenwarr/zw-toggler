@@ -19,7 +19,7 @@ describe("toggle on click", function () {
     init(`
       <div id="parent">
         <button id="btn" data-toggle="parent--on" data-toggle-parent="#parent"></button> 
-      </div>    
+      </div>
     `);
 
     sendEvent('btn', 'click');
@@ -48,7 +48,7 @@ describe("toggle on click", function () {
       <div class="target" id="id1"></div>
       <div class="target" id="id2"></div>
       
-      <button data-toggle="a" data-toggle-target=".target" data-toggle-root=".root" id="btn"></button>    
+      <button data-toggle="a" data-toggle-target=".target" data-toggle-parent=".root" id="btn"></button>    
     </div>
     
     <div class="target" id="id3"></div>
