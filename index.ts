@@ -26,8 +26,6 @@ export class Toggler {
   /** Protected area **/
 
   protected static toggle(elem: Element, className: string|null): void {
-    console.log('toggle: ', elem, className);
-
     if (!elem || !className) {
       return;
     }
@@ -56,7 +54,6 @@ export class Toggler {
 
     for (let q = 0; q < nodes.length; ++q) {
       if (nodes[q]) {
-        console.log('toggling on', (nodes[q] as Element).getAttribute('id'));
         (nodes[q] as Element).classList.toggle(className);
       }
     }
