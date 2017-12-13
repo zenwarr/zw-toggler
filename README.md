@@ -24,7 +24,7 @@ npm i --save @zcomp/toggler
 # Usage
 
 ```javascript
-const Toggler = require('zw-toggler');
+const Toggler = require('@zcomp/toggler');
 
 Toggler.init();
 ```
