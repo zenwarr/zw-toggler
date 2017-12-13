@@ -1,4 +1,4 @@
-import closest from "zw-closest";
+import closest from '@zcomp/closest';
 
 const ATTR_TOGGLE = 'data-toggle',
     ATTR_TOGGLE_PARENT = 'data-toggle-parent',
