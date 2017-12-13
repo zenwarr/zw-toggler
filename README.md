@@ -18,7 +18,7 @@ To specify element receiving classes, use `data-toggle-target` and `data-toggle-
 # Installation
 
 ```
-npm i --save zw-toggler
+npm i --save @zcomp/toggler
 ```
 
 # Usage
