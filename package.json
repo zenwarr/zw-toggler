@@ -1,11 +1,11 @@
 {
   "name": "@zcomp/toggler",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "dependencies": {
-    "@zcomp/closest": "^0.0.3"
+    "@zcomp/closest": "^0.0.4"
   },
   "devDependencies": {
     "@types/chai": "^4.0.5",
